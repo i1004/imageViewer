@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+<title>Base64 Image Viewer</title>
+
+</head>
+
+<body>
+
+<!-- file:///E:/DEV/Javascript/base64_image_viewer.html?image=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg== -->
+
+<!-- file:///E:/DEV/Javascript/base64_image_viewer.html?image=iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg== -->
+
+<script type="text/javascript">
+
+function getParameter(name) {
+
+    var params = location.search.substr(location.search.indexOf("?") + 1);
+    var sval = "";
+    params = params.split("&");
+	
+    for (var i = 0; i < params.length; i++) {
+
+        temp = params[i].split("=");
+
+        if ([temp[0]] == name) { sval = temp[1]; }
+    }
+    return sval;
+}
+
+var image = getParameter("image");
+
+console.log("image : " + image);
+
+if(image.indexOf('data:image/png;base64,') == 0)
+
+document.write("<img src='" + image + "' />");
+
+else
+
+document.write("<img src='data:image/png;base64," + image + "' />");
+
+</script>
+
+</body>
+
+</html>
